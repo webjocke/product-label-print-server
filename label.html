@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url(<%= data.fontLink %>);
+        }
+
+        :root {
+            --size-multiplier: 6;
+        }
+        body {
+            width: calc(70mm * var(--size-multiplier)); /* Paper is 62x29mm */
+            height: calc(29mm * var(--size-multiplier));
+            padding-bottom: calc(0mm * 2 * var(--size-multiplier));
+            padding-right: calc(0mm * 2 * var(--size-multiplier));
+            box-sizing: border-box;
+            color: black;
+            font-family: myFirstFont;
+        }
+        #container {
+            /*border: calc(1px * var(--size-multiplier)) solid black;*/
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            display: grid;
+            grid-template-columns: min-content 1fr;
+            grid-template-rows: 1fr min-content min-content;
+        }
+        #title {
+            grid-column: 1 / 3;
+            font-size: calc(20px * var(--size-multiplier));
+            line-height: calc(20px * var(--size-multiplier));
+            height: calc(20px * var(--size-multiplier) * 3);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        #variant {
+            grid-column: 1 / 3;
+            font-size: calc(12px * var(--size-multiplier));
+            line-height: calc(14px * var(--size-multiplier));
+            height: calc(14px * var(--size-multiplier) * 1);
+            font-weight: normal;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            padding-bottom: calc(1mm * var(--size-multiplier));
+        }
+        #url {
+            padding-top: calc(1mm * var(--size-multiplier));
+            padding-right: calc(1mm * var(--size-multiplier));
+            white-space: nowrap;
+            font-size: calc(12px * var(--size-multiplier));
+            font-weight: normal;
+        }
+        #antal {
+            padding-top: calc(1mm * var(--size-multiplier));
+            font-size: calc(12px * var(--size-multiplier));
+            font-weight: normal;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="title">
+            <%= data.title %>
+        </div>
+        <div id="url">
+            sizable.se/<%= data.id %>
+        </div>
+        <div id="antal">
+            Antal: <%= data.amount %> st
+        </div>
+        <div id="variant">
+            <% if (data.variant != "") { %>
+                Variant: <%= data.variant %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
