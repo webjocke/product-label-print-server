@@ -4,14 +4,14 @@ A script that we use at [sizable.se](https://sizable.se) that listens for POST r
 After a lot of trial and error, I can only get this setup to work on `Microsoft Windows` (win10 in my case).
 
 ## Incomming json request payload
+`POST /print`
 ```json
-POST /print
 {
     "title": "Apple iPhone 15 Pro",
     "variant": "64GB Midnight Green",
     "id": "P.RF3I4",
-    "amount": 1, // number on label
-    "amount_of_labels": 1, // how many labels to print
+    "amount": 1,
+    "amount_of_labels": 1
 }
 ```
 
@@ -31,8 +31,9 @@ POST /print
 ✅ Brother QL-570 label printer (`62x29mm` labels)
 
 ## IrfanView + QL-570 + 62x29mm
-I use these printer settings. You probably need to change them if you don't use the exact configuration I do.
-![IrfanView setting](https://github.com/webjocke/product-label-print-server/blob/master/IrfanView-printer-settings.png?raw=true)
+I use these IrfanView printer settings. You probably need to change them if you don't use the exact same configuration I do.
+
+![IrfanView setting](https://github.com/webjocke/product-label-print-server/blob/main/IrfanView-printer-settings.png?raw=true)
 
 
 ## How to run it
